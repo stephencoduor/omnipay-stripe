@@ -3,26 +3,24 @@
 /**
  * Stripe Create Plan Request.
  */
-
 namespace Omnipay\Stripe\Message;
 
 /**
  * Stripe Create Plan Request
  *
- * @see \Omnipay\Stripe\Gateway
- * @link https://stripe.com/docs/api/plans/create
+ * @see Omnipay\Stripe\Gateway
+ * @link https://stripe.com/docs/api#create_plan
  */
 class CreatePlanRequest extends AbstractRequest
 {
     /**
      * Set the plan ID
      *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
-    public function setId($value)
+    public function setId($planId)
     {
-        return $this->setParameter('id', $value);
+        return $this->setParameter('id', $planId);
     }
 
     /**
@@ -36,14 +34,53 @@ class CreatePlanRequest extends AbstractRequest
     }
 
     /**
+     * Set the plan amount
+     *
+     * @return CreatePlanRequest provides a fluent interface.
+     */
+    public function setAmount($planAmount)
+    {
+        return $this->setParameter('amount', $planAmount);
+    }
+
+    /**
+     * Get the plan amount
+     *
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->getParameter('amount');
+    }
+
+    /**
+     * Set the plan currency
+     *
+     * @return CreatePlanRequest provides a fluent interface.
+     */
+    public function setCurrency($planCurrency)
+    {
+        return $this->setParameter('currency', $planCurrency);
+    }
+
+    /**
+     * Get the plan currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->getParameter('currency');
+    }
+
+    /**
      * Set the plan interval
      *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
-    public function setInterval($value)
+    public function setInterval($planInterval)
     {
-        return $this->setParameter('interval', $value);
+        return $this->setParameter('interval', $planInterval);
     }
 
     /**
@@ -59,12 +96,11 @@ class CreatePlanRequest extends AbstractRequest
     /**
      * Set the plan interval count
      *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
-    public function setIntervalCount($value)
+    public function setIntervalCount($planIntervalCount)
     {
-        return $this->setParameter('interval_count', $value);
+        return $this->setParameter('interval_count', $planIntervalCount);
     }
 
     /**
@@ -79,33 +115,28 @@ class CreatePlanRequest extends AbstractRequest
 
     /**
      * Set the plan name
-     * @deprecated use setNickname() instead
      *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
-    public function setName($value)
+    public function setName($planName)
     {
-        return $this->setNickname($value);
+        return $this->setParameter('name', $planName);
     }
 
     /**
      * Get the plan name
-     * @deprecated use getNickname() instead
      *
      * @return string
      */
     public function getName()
     {
-        return $this->getNickname();
+        return $this->getParameter('name');
     }
 
     /**
      * Set the plan statement descriptor
-     * @deprecated Not used anymore
      *
-     * @param $planStatementDescriptor
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
     public function setStatementDescriptor($planStatementDescriptor)
     {
@@ -114,7 +145,6 @@ class CreatePlanRequest extends AbstractRequest
 
     /**
      * Get the plan statement descriptor
-     * @deprecated Not used anymore
      *
      * @return string
      */
@@ -124,196 +154,9 @@ class CreatePlanRequest extends AbstractRequest
     }
 
     /**
-     * Set the plan product
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setProduct($value)
-    {
-        return $this->setParameter('product', $value);
-    }
-
-    /**
-     * Get the plan product
-     *
-     * @return string|array
-     */
-    public function getProduct()
-    {
-        return $this->getParameter('product');
-    }
-
-    /**
-     * Set the plan amount
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setAmount($value)
-    {
-        return $this->setParameter('amount', (integer)$value);
-    }
-
-    /**
-     * Get the plan amount
-     *
-     * @return int
-     */
-    public function getAmount()
-    {
-        return $this->getParameter('amount');
-    }
-
-    /**
-     * Set the plan tiers
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setTiers($value)
-    {
-        return $this->setParameter('tiers', $value);
-    }
-
-    /**
-     * Get the plan tiers
-     *
-     * @return int
-     */
-    public function getTiers()
-    {
-        return $this->getParameter('tiers');
-    }
-
-    /**
-     * Set the plan tiers mode
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setTiersMode($value)
-    {
-        return $this->setParameter('tiers_mode', $value);
-    }
-
-    /**
-     * Get the plan tiers mode
-     *
-     * @return int
-     */
-    public function getTiersMode()
-    {
-        return $this->getParameter('tiers_mode');
-    }
-
-    /**
-     * Set the plan nickname
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setNickname($value)
-    {
-        return $this->setParameter('nickname', $value);
-    }
-
-    /**
-     * Get the plan nickname
-     *
-     * @return string|array
-     */
-    public function getNickname()
-    {
-        return $this->getParameter('nickname');
-    }
-
-    /**
-     * Set the plan metadata
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setMetadata($value)
-    {
-        return $this->setParameter('metadata', $value);
-    }
-
-    /**
-     * Get the plan metadata
-     *
-     * @return string|array
-     */
-    public function getMetadata()
-    {
-        return $this->getParameter('metadata');
-    }
-
-    /**
-     * Set the plan active
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setActive($value)
-    {
-        return $this->setParameter('active', $value);
-    }
-
-    /**
-     * Get the plan active
-     *
-     * @return string|array
-     */
-    public function getActive()
-    {
-        return $this->getParameter('active');
-    }
-
-    /**
-     * Set the plan billingScheme
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setBillingScheme($value)
-    {
-        return $this->setParameter('billing_scheme', $value);
-    }
-
-    /**
-     * Get the plan billingScheme
-     *
-     * @return string|array
-     */
-    public function getBillingScheme()
-    {
-        return $this->getParameter('billing_scheme');
-    }
-
-    /**
-     * Set the plan aggregate usage
-     *
-     * @param $planAggregateUsage
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setAggregateUsage($planAggregateUsage)
-    {
-        return $this->setParameter('aggregate_usage', $planAggregateUsage);
-    }
-
-    /**
-     * Get the plan aggregate usage
-     *
-     * @return string
-     */
-    public function getAggregateUsage()
-    {
-        return $this->getParameter('aggregate_usage');
-    }
-
-    /**
      * Set the plan trial period days
      *
-     * @param $planTrialPeriodDays
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     * @return CreatePlanRequest provides a fluent interface.
      */
     public function setTrialPeriodDays($planTrialPeriodDays)
     {
@@ -330,114 +173,31 @@ class CreatePlanRequest extends AbstractRequest
         return $this->getParameter('trial_period_days');
     }
 
-    /**
-     * Set the plan transform usage
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setTransformUsage($value)
-    {
-        return $this->setParameter('transform_usage', $value);
-    }
-
-    /**
-     * Get the plan transform usage
-     *
-     * @return int
-     */
-    public function getTransformUsage()
-    {
-        return $this->getParameter('transform_usage');
-    }
-
-    /**
-     * Set the plan usage type
-     *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
-     */
-    public function setUsageType($value)
-    {
-        return $this->setParameter('usage_type', $value);
-    }
-
-    /**
-     * Get the plan usage type
-     *
-     * @return int
-     */
-    public function getUsageType()
-    {
-        return $this->getParameter('usage_type');
-    }
-
     public function getData()
     {
-        $this->validate('currency', 'interval', 'product');
-
-        if (null == $this->getBillingScheme() || 'per_unit' == $this->getBillingScheme()) {
-            $this->validate('amount');
-        } elseif ('tiered' == $this->getBillingScheme()) {
-            $this->validate('tiers', 'tiers_mode');
-        }
+        $this->validate('id', 'amount', 'currency', 'interval', 'name');
 
         $data = array(
+            'id' => $this->getId(),
+            'amount' => $this->getAmount(),
             'currency' => $this->getCurrency(),
             'interval' => $this->getInterval(),
-            'product' => $this->getProduct()
+            'name' => $this->getName()
         );
 
-        if (null != $this->getBillingScheme()) {
-            $data['billing_scheme'] = $this->getBillingScheme();
+        $intervalCount = $this->getIntervalCount();
+        if ($intervalCount != null) {
+            $data['interval_count'] = $intervalCount;
         }
 
-        if (null != $this->getId()) {
-            $data['id'] = $this->getId();
+        $statementDescriptor = $this->getStatementDescriptor();
+        if ($statementDescriptor != null) {
+            $data['statement_descriptor'] = $statementDescriptor;
         }
 
-        if (null != $this->getAmount()) {
-            $data['amount'] = $this->getAmount();
-        }
-
-        if (null != $this->getNickName()) {
-            $data['nickname'] = $this->getNickName();
-        }
-
-        if (null != $this->getMetadata()) {
-            $data['metadata'] = $this->getMetadata();
-        }
-
-        if (null != $this->getActive()) {
-            $data['active'] = $this->getActive();
-        }
-
-        if (null != $this->getIntervalCount()) {
-            $data['interval_count'] = $this->getIntervalCount();
-        }
-
-        if (null != $this->getAggregateUsage()) {
-            $data['aggregate_usage'] = $this->getAggregateUsage();
-        }
-
-        if (null != $this->getTrialPeriodDays()) {
-            $data['trial_period_days'] = $this->getTrialPeriodDays();
-        }
-
-        if (null != $this->getTransformUsage()) {
-            $data['transform_usage'] = $this->getTransformUsage();
-        }
-
-        if (null != $this->getUsageType()) {
-            $data['usage_type'] = $this->getUsageType();
-        }
-
-        if (null != $this->getTiers()) {
-            $data['tiers'] = $this->getTiers();
-        }
-
-        if (null != $this->getTiersMode()) {
-            $data['tiers_mode'] = $this->getTiersMode();
+        $trialPeriodDays = $this->getTrialPeriodDays();
+        if ($trialPeriodDays != null) {
+            $data['trial_period_days'] = $trialPeriodDays;
         }
 
         return $data;
